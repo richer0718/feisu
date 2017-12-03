@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ 
+<link  href="Css/layout.css" rel="stylesheet" type="text/css" />
+<link href="Css/cb.css" rel="stylesheet" type="text/css"   />
+<link  href="Css/n.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" charset="utf-8" src="../Public/admin/js/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="../Public/admin/js/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="../Public/admin/js/lang/zh-cn/zh-cn.js"></script>
+
+<style>
+.biankuangs{ border:solid #A6D2FF 1px; border-top:0px; }
+#item_text2,#item_text1,#itemtypes2,#item_text3{ /**/display:none;}
+</style> 
+<script>
+	function gooo(id){
+		if(id!=""){
+		location.href='?x='+id;
+		}
+	}
+function change_itemtypes2(name){
+
+ 
+ 	document.getElementById("types2").value="";
+	document.getElementById("types3").value="";
+	if(name=='1'){
+       document.getElementById("item_text2").style.display="block"; 
+	   
+	   document.getElementById("item_text3").style.display="none"; 
+	   
+	}else if(name=='3'){
+ 
+		document.getElementById("item_text2").style.display="none";
+		document.getElementById("item_text3").style.display="block"; 	
+	}else{
+ 
+		document.getElementById("item_text2").style.display="none";
+		document.getElementById("item_text3").style.display="none"; 
+	}
+	
+}
+
+function change_itemtypes23(name){
+ 	document.getElementById("types2").value="";
+	if(name=='1'){
+       document.getElementById("item_text2").style.display="block"; 
+	}else{
+ 
+		document.getElementById("item_text2").style.display="none"; 
+	}
+}
+
+function apply1(){
+	var f=document.form1;
+	if(f.title.value==""){
+		alert('标题不能为空');
+		return false;
+	}
+
+	
+	
+}
+</script>
+</head>
+
+<body>
+<!--
+<table width="99%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:4px;">
+      <tr>
+        <td width="17" background="../Public/Images/bj4.gif"><img src="../Public/Picture/r.gif" width="16" height="16" /></td>
+        <td width="466" background="../Public/Images/bj4.gif">张宇(学院申报者):你好！欢迎光临，您上次登录时间是：2015-09-20 23:15:15		
+		</td>
+        <td width="162" align="center" background="../Public/Images/bj4.gif">
+		
+				</td>           
+      </tr>
+    </table>
+	-->
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="1%" align="left" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b1.jpg" width="10" height="26" /></td>
+            <td width="68%" background="../Public/Images/b2.jpg"><table width="211" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="20" align="left"><img src="../Public/Picture/tz.gif" width="10" height="16" /></td>
+                  <td width="191" align="left" class="biao">公告信息</td>
+                </tr>
+            </table></td>
+            <td width="31%" align="right" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b3.jpg" width="9" height="26" /></td>
+          </tr>
+</table>
+<form action="__URL__/submitEditNews" method="post" enctype="multipart/form-data" name="form1" id="form1" onsubmit="return apply1();">
+<table width="99%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#AEDEF4">
+	<input type="hidden" name="id" value="{$res['id']}" />
+	<tr height="50">
+		<td height="25" align="center" bgcolor="#FFF9DF">标题</td>
+		<td align="left" bgcolor="#FFFFFF" class="t5">
+		  <div align="left">
+			<input name="title" type="text" id="title" size="70" style="height:30px;line-height:30px;" value="{$res['title']}"/>
+		  </div>
+		</td>										
+    </tr>
+    <tr height="50">
+		<td height="25" align="center" bgcolor="#FFF9DF">是否置顶</td>
+		<td align="left" bgcolor="#FFFFFF" class="t5">
+		  <select name="ishead">
+		  	<option value="0" <if condition="$res['ishead'] eq '0'">selected="selected"</if> >否</option>
+		  	<option value="1" <if condition="$res['ishead'] eq '1'">selected="selected"</if> >是</option>
+		  </select>
+		</td>										
+    </tr>
+	<tr>
+		<td align="left" bgcolor="#FFFFFF" class="t5" colspan="2">
+			<script id="content" name="content" type="text/plain" style="width:100%;height:400px;">{$res['content']}</script>
+			<script type="text/javascript">
+			//实例化编辑器
+			 //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+				var ue = UE.getEditor('content');
+			</script>
+		</td>										
+    </tr>
+	
+    <tr>
+      <td height="25" colspan="8" align="center" bgcolor="#FFFFFF"><label>
+        <input type="submit" name="Submit" value="发布" />
+      </label></td>
+    </tr>
+  </table> 
+    
+ </form>
+</body>
+</html>

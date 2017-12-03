@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ 
+<link  href="../Public/Css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../Public/Css/cb.css" rel="stylesheet" type="text/css"   />
+<link  href="../Public/Css/n.css" rel="stylesheet" type="text/css" />
+<style>
+.biankuangs{ border:solid #A6D2FF 1px; border-top:0px;   }
+#xueke,#item_text2,#item_text1,#itemtypes2,#item_text3{ /**/display:none;}
+</style> 
+<script>
+function change_itemtypes(name){
+	document.getElementById("itemtypes2").value="";
+	document.getElementById("xueke").value="";
+	if(name==2){
+	    document.getElementById("itemtypes2").style.display="block";
+		document.getElementById("item_text1").style.display="block";
+		//document.getElementById("xueke").style.display="block";
+	}else{
+		document.getElementById("itemtypes2").style.display="none"; 
+		document.getElementById("xueke").style.display="none"; 
+		document.getElementById("item_text1").style.display="none"; 
+		document.getElementById("item_text2").style.display="none"; 
+	}
+	
+}
+
+function change_itemtypes2(name){
+ 	document.getElementById("types2").value="";
+	document.getElementById("types3").value="";
+	if(name=='1'){
+       document.getElementById("item_text2").style.display="block"; 
+	   
+	   document.getElementById("item_text3").style.display="none"; 
+	   
+	}else if(name=='3'){
+ 
+		document.getElementById("item_text2").style.display="none";
+		document.getElementById("item_text3").style.display="block"; 	
+	}else{
+ 
+		document.getElementById("item_text2").style.display="none";
+		document.getElementById("item_text3").style.display="none"; 
+	}
+}
+</script>
+</head>
+
+<body>
+<table width="99%" height="25" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-bottom:4px;">
+      <tr>
+        <td width="17" background="../Public/Images/bj4.gif"><img src="../Public/Picture/r.gif" width="16" height="16" /></td>
+        <td width="466" background="../Public/Images/bj4.gif">{$_SESSION['login_user']}(代理):你好！		
+		</td>
+        <td width="162" align="center" background="../Public/Images/bj4.gif">
+		
+				</td>           
+      </tr>
+    </table>
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="1%" align="left" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b1.jpg" width="10" height="26" /></td>
+            <td width="68%" background="../Public/Images/b2.jpg"><table width="124" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="20" align="left"><img src="../Public/Picture/tz.gif" width="10" height="16" /></td>
+                  <td width="104" align="left" class="biao">个人信息</td>
+                </tr>
+            </table></td>
+            <td width="31%" align="right" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b3.jpg" width="9" height="26" /></td>
+          </tr>
+</table>
+
+  <table width="99%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#AEDEF4" style="border:1px solid #AEDEF4">
+    <tr height="30">
+      
+      <td align="center" bgcolor="#EFFBFE">折扣</td>
+      <td align="center" bgcolor="#EFFBFE">总点数</td>
+      <td align="center" bgcolor="#EFFBFE">消耗点数</td>
+      <td align="center" bgcolor="#EFFBFE">剩余点数</td>
+	  <td align="center" bgcolor="#EFFBFE">状态</td>
+      
+    </tr>
+		
+	    <tr   height="30" onmouseout="this.style.backgroundColor='#ffffff'"     bgcolor="#ffffff"  onmouseover="this.style.backgroundColor='#E6F2FF'"      >
+		  
+		  
+		  <td align="center">{$res['cut']}</td>
+		  <td align="center">{$res['point']+$pointuse}</td>
+		  <td align="center">{$pointuse}</td>
+		  <td align="center">{$res['point']}</td>
+		  <td align="center"><if condition="$res['status'] eq '0'">正常<else/>暂停</if></td>		
+		  
+		</tr>
+
+</table>
+<div style="text-align:center;font-size:30px;line-height:40px;"><b>公告栏</b></div>
+<table width="99%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#AEDEF4" style="border:1px solid #AEDEF4">
+    <tr height="30">
+      
+      <td align="center" bgcolor="#EFFBFE">标题</td>
+      <td align="center" bgcolor="#EFFBFE">发布时间</td>
+      <td align="center" bgcolor="#EFFBFE">操作</td>
+      
+    </tr>
+
+		<volist name="res_news" id="vo">
+	    <tr   height="30" onmouseout="this.style.backgroundColor='#ffffff'"     bgcolor="#ffffff"  onmouseover="this.style.backgroundColor='#E6F2FF'"      >
+		  <td align="center">{$vo.title}</td>
+		  <td align="center">{$vo.publishtime|date='Y-m-d H:i:s',###}</td>
+		  <td align="center"><a href="__URL__/newsInfo/id/{$vo.id}">查看</a></td>		
+		  
+		</tr>
+		</volist>
+</table>
+
+</body>
+</html>

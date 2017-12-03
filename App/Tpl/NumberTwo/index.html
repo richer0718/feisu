@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+ 
+<link  href="../Public/Css/layout.css" rel="stylesheet" type="text/css" />
+<link href="../Public/Css/cb.css" rel="stylesheet" type="text/css"   />
+<link  href="../Public/Css/n.css" rel="stylesheet" type="text/css" />
+
+
+<style>
+.biankuangs{ border:solid #A6D2FF 1px; border-top:0px;   }
+#xueke,#item_text2,#item_text1,#itemtypes2,#item_text3{ /**/display:none;}
+</style> 
+<script>
+
+
+window.onload=function(){
+    var CheckAll=document.getElementById('All');
+    var UnCheck=document.getElementById('uncheck');
+    var OtherCheck=document.getElementById('othercheck');
+	//没有卖出的
+    var SelectNoBuy=document.getElementById('selectnobuy');
+    
+    var    CheckBox=document.getElementsByClassName('checkid');
+	//没有卖出的name
+    var    CheckNoBox=document.getElementsByClassName('supercheck');
+    CheckAll.onclick=function(){
+            for(i=0;i<CheckBox.length;i++){
+                    CheckBox[i].checked=true;
+                };
+        };
+		
+	SelectNoBuy.onclick=function(){
+            for(i=0;i<CheckNoBox.length;i++){
+                    CheckNoBox[i].checked=true;
+                };
+        };
+		
+    UnCheck.onclick=function(){
+            for(i=0;i<CheckBox.length;i++){
+                    CheckBox[i].checked=false;
+                };
+        };
+    othercheck.onclick=function(){
+            for(i=0;i<CheckBox.length;i++){
+                    if(CheckBox[i].checked==true){
+                            CheckBox[i].checked=false;
+                        }
+                    else{
+                        CheckBox[i].checked=true
+                        }
+                    
+                };
+        };
+		
+		
+		
+		
+};
+
+
+</script>
+</head>
+
+<body>
+
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="1%" align="left" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b1.jpg" width="10" height="26" /></td>
+            <td width="68%" background="../Public/Images/b2.jpg"><table width="124" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="20" align="left"><img src="../Public/Picture/tz.gif" width="10" height="16" /></td>
+                  <td width="104" align="left" class="biao">账号搜索</td>
+                </tr>
+            </table></td>
+            <td width="31%" align="right" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b3.jpg" width="9" height="26" /></td>
+          </tr>
+</table>
+<table width="99%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#AEDEF4">
+    <tr>
+      <td align="center" bgcolor="#E2F7FE">
+		<form  method="get" action="__URL__">
+    	  <table width="99%" border="0" cellspacing="1" cellpadding="3">
+				<tr>
+				  <td width="5%" height="25" align="center">大区：</td>
+				  <td width="15%" align="left"><label>
+					<select name="area">
+						<option value="">请选择大区</option>
+						<volist name="area_name" id="vo">
+						<option value="{$vo.name}">{$vo.name}</option>
+						</volist>
+					</select>
+				  </label></td>
+				  <td width="5%" align="center">编号：</td>
+				  <td width="15%" align="left"><input type="text" name="uid" /></td>
+				  
+				  <td width="5%" align="center">游戏账号：</td>
+				  <td width="15%" align="left"><input type="text" name="number" /></td>
+				  
+				  <td width="5%" align="center">代理账号：</td>
+				  <td width="15%" align="left"><input type="text" name="username" /></td>
+				  <td width="5%"><input type="submit" name="Submit" value="搜索" style="width:100%;"/></td>
+				  <td width="5%"><a href="__URL__">清除条件</a></td>
+				  
+				</tr>
+			  </table>
+	        </form>
+		</td>
+    </tr>
+</table>
+
+<table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="1%" align="left" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b1.jpg" width="10" height="26" /></td>
+            <td width="68%" background="../Public/Images/b2.jpg"><table width="124" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="20" align="left"><img src="../Public/Picture/tz.gif" width="10" height="16" /></td>
+                  <td width="104" align="left" class="biao">选择</td>
+                </tr>
+            </table></td>
+            <td width="31%" align="right" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b3.jpg" width="9" height="26" /></td>
+          </tr>
+</table>
+<table width="99%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#AEDEF4">
+    <tr>
+      <td align="left" bgcolor="#E2F7FE">
+		<input type="button" value="全选" id="All" />
+		<input type="button" value="全不选" style="margin-left:20px;" id="uncheck" />
+		<input type="button" value="反选"  style="margin-left:20px;" id="othercheck"/>
+		<input type="button" value="选择没有卖出的"  style="margin-left:20px;" id="selectnobuy"/>
+		</td>
+    </tr>
+</table>
+
+<table width="50%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="5"></td>
+  </tr>
+</table>
+  <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="1%" align="left" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b1.jpg" width="10" height="26" /></td>
+            <td width="68%" background="../Public/Images/b2.jpg"><table width="124" border="0" align="left" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="20" align="left"><img src="../Public/Picture/tz.gif" width="10" height="16" /></td>
+                  <td width="104" align="left" class="biao">账号列表</td>
+                </tr>
+            </table></td>
+            <td width="31%" align="right" background="../Public/Images/b2.jpg"><img src="../Public/Picture/b3.jpg" width="9" height="26" /></td>
+          </tr>
+</table>
+<form method="post" action="__URL__/deleteNumber" >
+  <table width="99%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#AEDEF4" style="border:1px solid #AEDEF4">
+    <tr>
+	  
+      <td width="5" height="25" align="center" bgcolor="#EFFBFE">id</td>
+      <td align="center" bgcolor="#EFFBFE" width="50">编号</td>
+      <td align="center" bgcolor="#EFFBFE">账号组合 </td>
+      <td align="center" bgcolor="#EFFBFE" width="80">大区</td>
+      <td align="center" bgcolor="#EFFBFE">账号</td>
+      <td align="center" bgcolor="#EFFBFE">密码</td>
+      
+
+	  <td align="center" bgcolor="#EFFBFE" width="50">原价</td>
+	  <td align="center" bgcolor="#EFFBFE" width="80">提货时间</td>
+	  
+	  <td align="center" bgcolor="#EFFBFE" width="50">消耗点数</td>
+	  <td align="center" bgcolor="#EFFBFE">代理账号</td>
+	  
+	  <td  height="25" align="center" bgcolor="#EFFBFE"><input type="submit" value="删除" /></td>
+	   <td align="center" bgcolor="#EFFBFE" width="50">操作</td>
+	   <td align="center" bgcolor="#EFFBFE" width="50">操作</td>
+    </tr>
+		<volist name="res" id="vo">
+	    <tr  onmouseout="this.style.backgroundColor='#ffffff'"     bgcolor="#ffffff"  onmouseover="this.style.backgroundColor='#E6F2FF'"      >
+		  
+		  <td height="25" align="center"  >{$key+1}</td>
+		  <td align="center" class="t5"   ><div align="left"><strong>{$vo.uid}</strong></div></td>
+		  <td align="left">{$vo.content}</td>
+		  <td align="center">{$vo.area}</td>
+		  <td align="center">{$vo.number}</td>
+		  <td align="center">{$vo.password}</td>
+		
+		  <td align="center">{$vo.price}</td>
+		  <td align="center">{$vo.buytime|date='m-d H:i',###}</td>
+		  <td align="center">{$vo.buyprice|ifEmpty}</td>
+		  <td align="center">{$vo.belongid|ifEmpty}</td>
+		  
+		  <td height="25" align="center"  ><input type="checkbox" name="id[]" value="{$vo.id}"   class="checkid  <if condition="$vo.status eq '0' ">supercheck</if>"  <if condition="$checknotbuy eq 'yes' && $vo.status eq '0' ">checked = true</if> /></td>
+		  <td align="left">
+			<div align="left" style="padding-left:5px">
+			  <div align="center">
+					<a href="__URL__/editNumber/id/{$vo.id}">修改</a>
+				</div>
+			</div>
+			</td>	
+		  <td align="left">
+			<div align="left" style="padding-left:5px">
+			  <div align="center">
+					<a href="__URL__/deleteNumber/id/{$vo.id}">删除</a>
+				</div>
+			</div>
+			</td>										
+		</tr>
+	    </volist>
+		<tr>
+      <td height="25" bgcolor="#FFFFFF">合计:</td>
+      <td colspan="12" bgcolor="#FFFFFF">&nbsp;
+	  <span class='pagelink'></span> <span class='pagelink' style="padding-right:20px;" >总代码数：{$number_count}</span> <span class='pagelink' style="padding-right:20px;" >提取代码数：{$buy_count}</span><span class='pagelink' style="padding-right:20px;" >剩余代码数：{$number_count-$buy_count}</span></td>
+      
+    </tr>
+      <tr>
+      <td colspan="13" bgcolor="#FFFFFF" height="25">&nbsp;
+	  <span class='pagelink'></span> <span class='pagelink'>{$page}</span> <span class='pagelink'></span></td>
+      
+    </tr>
+</table>
+</form>
+</body>
+</html>
